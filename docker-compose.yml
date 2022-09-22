@@ -239,7 +239,7 @@ networks:
 
 volumes:
     html:
-        name: wp-html
+        name: drupal-html
         driver: local
         driver_opts:
             type: none
