@@ -11,7 +11,7 @@ Plus, manage docker containers with Portainer.
 #### With this project you can quickly run the following:
 
 - [drupal (php-fpm)](https://hub.docker.com/_/drupal)
-- [nginx](https://hub.docker.com/_/nginx)
+- [webserver (nginx)](https://hub.docker.com/_/nginx)
 - [certbot (letsencrypt)](https://hub.docker.com/r/certbot/certbot)
 - [phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
 - [database](https://hub.docker.com/_/mariadb)
