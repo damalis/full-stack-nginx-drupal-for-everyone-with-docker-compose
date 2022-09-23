@@ -217,6 +217,10 @@ docker container restart drupal
 add and/or remove drupal site folders and files with any ftp client program in ```./drupal``` folder.
 <br />You can also visit `https://example.com` to access website after starting the containers.
 
+#### Database configuration
+
+ADVANCED OPTIONS -> Host: database
+
 #### Redis
 
 Edit Drupal settings file: ./drupal/sites/default/settings.php and add these lines at the bottom of the file or make uncomment:
