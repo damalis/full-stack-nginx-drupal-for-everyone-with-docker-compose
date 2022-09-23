@@ -193,7 +193,7 @@ docker-compose up -d
 All necessary changes to sites/default and sites/default/settings.php have been made, so you should remove write permissions to them now in order to avoid security risks.
 
 ```
-sudo chmod 655 ./drupal/sites/default/settings.php
+chmod 655 ./drupal/sites/default/settings.php
 ```
 
 add or remove code in the ./php-fpm/php/conf.d/security.ini file for custom php.ini configurations
