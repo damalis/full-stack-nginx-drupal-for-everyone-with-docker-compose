@@ -35,8 +35,8 @@ services:
         labels:            
             - 'docker-volume-backup.stop-during-backup=true'
         command: bash -c "pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis && composer require 'drupal/redis:^1.5'; mkdir -p -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/files; install -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/default.settings.php ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
-        echo -e \"\n\$$settings['trusted_host_patterns'] = ['^example\.com$$', '^.+\.example\.com$$',];\n\$$settings['redis.connection']['host'] = 'redis';\n\$$settings['redis.connection']['port'] = 6379;\n\$$settings['cache']['default'] = 'cache.backend.redis';\n\$$settings['redis.connection']['base'] = 8;\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
-        grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; docker-php-entrypoint 'php-fpm'"
+            echo -e \"\n\$$settings['trusted_host_patterns'] = ['^example\.com$$', '^.+\.example\.com$$',];\n\$$settings['redis.connection']['host'] = 'redis';\n\$$settings['redis.connection']['port'] = 6379;\n\$$settings['cache']['default'] = 'cache.backend.redis';\n\$$settings['redis.connection']['base'] = 8;\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
+            grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; docker-php-entrypoint 'php-fpm'"
 
     webserver:
         depends_on:
