@@ -190,12 +190,6 @@ docker-compose up -d
 
 ### Website
 
-All necessary changes to sites/default and sites/default/settings.php have been made, so you should remove write permissions to them now in order to avoid security risks.
-
-```
-chmod 655 ./drupal/sites/default/settings.php
-```
-
 add or remove code in the ./php-fpm/php/conf.d/security.ini file for custom php.ini configurations
 
 Copy and paste the following code in the ./php-fpm/php-fpm.d/z-www.conf file for php-fpm configurations at 1Gb Ram Host
@@ -217,13 +211,13 @@ docker container restart drupal
 add and/or remove drupal site folders and files with any ftp client program in ```./drupal``` folder.
 <br />You can also visit `https://example.com` to access website after starting the containers.
 
-#### Database configuration
+#### Database
 
 ADVANCED OPTIONS -> Host: database
 
 #### Redis
 
-Edit Drupal settings file: ./drupal/sites/default/settings.php and add these lines at the bottom of the file or make uncomment:
+if there isn't these lines, Edit Drupal settings file: ./drupal/sites/default/settings.php and add these lines at the bottom of the file:
 
 ```
 $settings['redis.connection']['host'] = 'redis';
@@ -232,7 +226,21 @@ $settings['cache']['default'] = 'cache.backend.redis';
 $settings['redis.connection']['base'] = 8;
 ```
 
-#### Varnish Plugin
+#### Varnish
+
+[This link is to complete configure Varnish](https://www.varnish-software.com/developers/tutorials/configuring-varnish-drupal/#4-configure-caching-and-purging-in-drupal)
+
+Varnish Server Hostname: varnish
+
+Varnish Server Port: 8080
+
+Scheme: http
+
+All necessary changes to sites/default and sites/default/settings.php have been made, so you should remove write permissions to them now in order to avoid security risks.
+
+```
+chmod 655 ./drupal/sites/default/settings.php
+```
 
 ### phpMyAdmin
 
