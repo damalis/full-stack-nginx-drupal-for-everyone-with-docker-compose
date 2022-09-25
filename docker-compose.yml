@@ -34,9 +34,9 @@ services:
             TZ: '${LOCAL_TIMEZONE}'
         labels:            
             - 'docker-volume-backup.stop-during-backup=true'
-        command: bash -c "pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis && composer require 'drupal/redis:^1.5'; mkdir -p -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/files; install -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/default.settings.php ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
-            echo -e \"\n\$$settings['trusted_host_patterns'] = [\n\t'^$$(echo \"${DOMAIN_NAME}\" | sed 's/\./\\\./g')$$',\n\t'^.+\.$$(echo \"${DOMAIN_NAME}\" | sed 's/\./\\\./g')$$',\n];\n/*\n\$$settings['redis.connection']['host'] = 'redis';\n\$$settings['redis.connection']['port'] = 6379;\n\$$settings['cache']['default'] = 'cache.backend.redis';\n\$$settings['redis.connection']['base'] = 8;\n*/\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
-            grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; docker-php-entrypoint 'php-fpm'"
+        command: bash -c "pecl install redis && rm -rf /tmp/pear && docker-php-ext-enable redis && composer require 'drupal/redis:^1.5'; composer require drush/drush; composer require 'drupal/purge:^3.4' && composer require 'drupal/purge_purger_http:^1.0'; drush en redis purge_drush purge_processor_lateruntime purge_queuer_coretags purge_processor_cron purge_tokens purge_ui purge purge_purger_http purge_purger_http_tagsheader; 
+            if [ -z \"$$(ls /opt/drupal/web)\" ]; then install -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/default.settings.php ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && echo -e \"\n\$$settings['trusted_host_patterns'] = [\n\t'^$$(echo \"${DOMAIN_NAME}\" | sed 's/\./\\\./g')$$',\n\t'^.+\.$$(echo \"${DOMAIN_NAME}\" | sed 's/\./\\\./g')$$',\n];\n\$$settings['redis.connection']['host'] = 'redis';\n\$$settings['redis.connection']['port'] = 6379;\n\$$settings['cache']['default'] = 'cache.backend.redis';\n\$$settings['redis.connection']['base'] = 8;\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
+            mkdir -p -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/files; fi; grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; docker-php-entrypoint 'php-fpm'"
 
     webserver:
         depends_on:
@@ -146,7 +146,7 @@ services:
     
     database:
         image: '${DATABASE_IMAGE_NAME}:${DATABASE_VERSION}'
-        container_name: '${DATABASE_CONT_NAME}'
+        container_name: database
         networks:
             - backend
         volumes:
