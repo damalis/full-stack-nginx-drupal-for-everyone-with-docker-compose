@@ -25,17 +25,20 @@ services:
             - database
             - redis
             - varnish
+        healthcheck:
+            test: ["CMD-SHELL", "curl -fk https://${DOMAIN_NAME} || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+            start_period: 20s
         environment:
-            DB_HOST: 'database'
-            DB_USER: '${DB_USER}'
-            DB_PASSWORD: '${DB_PASSWORD}'
-            DB_NAME: '${DB_NAME}'
-            HOME: '/tmp'
             TZ: '${LOCAL_TIMEZONE}'
         labels:            
             - 'docker-volume-backup.stop-during-backup=true'
-        command: bash -c "pecl install redis && rm -rf /tmp/pear && docker-php-ext-enable redis && composer require 'drupal/redis:^1.5'; composer require drush/drush; composer require 'drupal/purge:^3.4' && composer require 'drupal/purge_purger_http:^1.0'; drush en redis purge_drush purge_processor_lateruntime purge_queuer_coretags purge_processor_cron purge_tokens purge_ui purge purge_purger_http purge_purger_http_tagsheader; 
-            if [ -z \"$$(ls /opt/drupal/web)\" ]; then install -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/default.settings.php ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && echo -e \"\n\$$settings['trusted_host_patterns'] = [\n\t'^$$(echo \"${DOMAIN_NAME}\" | sed 's/\./\\\./g')$$',\n\t'^.+\.$$(echo \"${DOMAIN_NAME}\" | sed 's/\./\\\./g')$$',\n];\n\$$settings['redis.connection']['host'] = 'redis';\n\$$settings['redis.connection']['port'] = 6379;\n\$$settings['cache']['default'] = 'cache.backend.redis';\n\$$settings['redis.connection']['base'] = 8;\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
+        command: >
+            bash -c "pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis && composer require 'drupal/redis:^1.6'; composer require drush/drush; composer require 'drupal/purge:^3.4' && composer require 'drupal/purge_purger_http:^1.0'; 
+            if [ ! -f \"${WEBSERVER_DOC_ROOT}/sites/default/settings.php\" ]; then install -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/default.settings.php ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && sed -i 's/#/\\/\\/#/g' ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && 
+            echo -e \"\\n\\$$settings['trusted_host_patterns'] = [\\n\\t'^$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n\\t'^.+\\.$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n];\\n\\$$settings['redis.connection']['host'] = 'redis';\\n\\$$settings['redis.connection']['port'] = 6379;\\n\\$$settings['cache']['default'] = 'cache.backend.redis';\\n\\$$settings['redis.connection']['base'] = 8;\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
             mkdir -p -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/files; fi; grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; docker-php-entrypoint 'php-fpm'"
 
     webserver:
@@ -49,13 +52,13 @@ services:
         volumes:
             - 'html:${WEBSERVER_DOC_ROOT}'
             - type: bind
-              source: ./nginx/nginx.conf
+              source: ./webserver/nginx.conf
               target: '${NGINX_PREFIX}/nginx.conf'
             - type: bind
-              source: ./nginx/templates/nginx.conf.template
+              source: ./webserver/templates/nginx.conf.template
               target: '${NGINX_PREFIX}/templates/default.conf.template'
             - type: bind
-              source: ./nginx/ssl-option/options-ssl-nginx.conf
+              source: ./webserver/ssl-option/options-ssl-nginx.conf
               target: '${LETSENCRYPT_CONF_PREFIX}/options-ssl-nginx.conf'
             - type: bind
               source: ./ssl-conf.sh
@@ -139,9 +142,9 @@ services:
             - "docker-volume-backup.stop-during-backup=true"
         command: >
             bash -c "echo ${PMA_HTPASSWD_USERNAME}:phpmyadmin:$$( printf \"%s:%s:%s\" \"${PMA_HTPASSWD_USERNAME}\" \"phpmyadmin\" \"${PMA_HTPASSWD_PASSWORD}\" | md5sum | awk '{print $$1}' ) > ${PMA_CONF_FOLDER}/.htpasswd 
-            && printf 'AuthType Digest\nAuthName \"phpmyadmin\"\nAuthDigestProvider file\nAuthUserFile ${PMA_CONF_FOLDER}/.htpasswd\nRequire valid-user\n' > ${WEBSERVER_DOC_ROOT}/.htaccess && a2enmod auth_digest; 
+            && printf 'AuthType Digest\\nAuthName \"phpmyadmin\"\\nAuthDigestProvider file\\nAuthUserFile ${PMA_CONF_FOLDER}/.htpasswd\\nRequire valid-user\\n' > ${WEBSERVER_DOC_ROOT}/.htaccess && a2enmod auth_digest; 
             mkdir -p ${WEBSERVER_DOC_ROOT}/../upload && chown www-data:www-data ${WEBSERVER_DOC_ROOT}/../upload && chmod a+w ${WEBSERVER_DOC_ROOT}/../upload; mkdir -p ${WEBSERVER_DOC_ROOT}/../save && chown www-data:www-data ${WEBSERVER_DOC_ROOT}/../save && chmod a+w ${WEBSERVER_DOC_ROOT}/../save;
-            grep -qxF 'ServerName 127.0.0.1' ${APACHE_CONFDIR_PREFIX}/apache2.conf || echo -e '\nServerName 127.0.0.1' >> ${APACHE_CONFDIR_PREFIX}/apache2.conf; grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; 
+            grep -qxF 'ServerName 127.0.0.1' ${APACHE_CONFDIR_PREFIX}/apache2.conf || echo -e '\\nServerName 127.0.0.1' >> ${APACHE_CONFDIR_PREFIX}/apache2.conf; grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; 
             a2enmod ssl && a2ensite default-ssl && a2dissite 000-default && /docker-entrypoint.sh 'apache2-foreground'"
     
     database:
@@ -252,7 +255,6 @@ volumes:
     dtredis:
         name: redis-data
     certbot-etc:
-        external:
-            name: certbot-etc        
+        external: true        
     certbot-var:
         name: certbot-var
