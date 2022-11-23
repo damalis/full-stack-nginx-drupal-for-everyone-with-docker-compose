@@ -38,7 +38,7 @@ services:
         command: >
             bash -c "pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis && composer require 'drupal/redis:^1.6'; composer require drush/drush; composer require 'drupal/purge:^3.4' && composer require 'drupal/purge_purger_http:^1.0'; 
             if [ ! -f \"${WEBSERVER_DOC_ROOT}/sites/default/settings.php\" ]; then install -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/default.settings.php ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && sed -i 's/#/\\/\\/#/g' ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && 
-            echo -e \"\\n\\$$settings['trusted_host_patterns'] = [\\n\\t'^$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n\\t'^.+\\.$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n];\\n\\$$settings['redis.connection']['host'] = 'redis';\\n\\$$settings['redis.connection']['port'] = 6379;\\n\\$$settings['cache']['default'] = 'cache.backend.redis';\\n\\$$settings['redis.connection']['base'] = 8;\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
+            echo -e \"\\n\\$$settings['trusted_host_patterns'] = [\\n\\t'^$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n\\t'^.+\\.$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n];\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
             mkdir -p -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/files; fi; grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; docker-php-entrypoint 'php-fpm'"
 
     webserver:
