@@ -260,13 +260,13 @@ Varnish Server Port: 8080
 
 Scheme: http
 
+[This link is to complete configure Varnish](https://www.varnish-software.com/developers/tutorials/configuring-varnish-drupal/#4-configure-caching-and-purging-in-drupal)
+
 All necessary changes to sites/default and sites/default/settings.php have been made, so you should remove write permissions to them now in order to avoid security risks.
 
 ```
 chmod 655 ./drupal/sites/default/settings.php
 ```
-
-[This link is to complete configure Varnish](https://www.varnish-software.com/developers/tutorials/configuring-varnish-drupal/#4-configure-caching-and-purging-in-drupal)
 
 ### phpMyAdmin
 
