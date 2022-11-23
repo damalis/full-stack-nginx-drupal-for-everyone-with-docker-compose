@@ -41,7 +41,7 @@ Create rules to open ports to the internet, or to a specific IPv4 address or ran
 	- [Webserver](#webserver)
 	- [Database](#database)
 	- [Redis](#redis)
-	- [Cache](#cache)
+	- [Varnish](#varnish)
 	- [phpMyAdmin](#phpmyadmin)
 	- [backup](#backup)					  
 
