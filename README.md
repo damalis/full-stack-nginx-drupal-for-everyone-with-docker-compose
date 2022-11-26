@@ -214,7 +214,7 @@ docker compose up -d
 
 ### Website
 
-You should see the "Hello, world!" page in your browser. If not, please check if your PHP installation satisfies Drupal's requirements.
+You should see the "Drupal installation" page in your browser. If not, please check if your PHP installation satisfies Drupal's requirements.
 
 ```
 https://example.com
