@@ -233,7 +233,7 @@ services:
             BACKUP_FILENAME: 'backup-%Y-%m-%dT%H-%M-%S.tar.gz'
             BACKUP_RETENTION_DAYS: '7'
             EXEC_LABEL: 'database'
-            #BACKUP_EXCLUDE_REGEXP: 'folder|folder|file|\\.log$$'    
+            BACKUP_EXCLUDE_REGEXP: 'core|modules|\\.log$$'    
 
 networks:
     backend: null
