@@ -372,8 +372,7 @@ Scheme: http
 All necessary changes to sites/default and sites/default/settings.php have been made, so you should remove write permissions to them now in order to avoid security risks.
 
 ```
-chmod 655 ./drupal/sites/default
-chmod 655 ./drupal/sites/default/settings.php
+sudo chmod 655 ./drupal/sites/default/settings.php
 ```
 
 ### phpMyAdmin
