@@ -308,7 +308,7 @@ ADVANCED OPTIONS -> Host: database
 
 #### Redis
 
-at page https://example.com/admin/modules, filter: redis and check then install.
+at page https://example.com/en/admin/modules, filter: redis and check then install.
 
 if there isn't these lines, Edit Drupal settings file: ```./drupal/sites/default/settings.php``` and add these lines at the bottom of the file:
 
@@ -359,7 +359,7 @@ services:
 
 #### Varnish
 
-at page https://example.com/admin/modules, filter: purge and check then install.
+at page https://example.com/en/admin/modules, filter: purge and check then install.
 
 Varnish Server Hostname: varnish
 
@@ -372,6 +372,7 @@ Scheme: http
 All necessary changes to sites/default and sites/default/settings.php have been made, so you should remove write permissions to them now in order to avoid security risks.
 
 ```
+chmod 655 ./drupal/sites/default
 chmod 655 ./drupal/sites/default/settings.php
 ```
 
