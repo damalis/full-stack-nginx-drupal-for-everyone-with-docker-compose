@@ -1,20 +1,50 @@
 # [full stack nginx Drupal for everyone with docker compose](https://github.com/damalis/full-stack-nginx-drupal-for-everyone-with-docker-compose)
 
-If You want to build a website with Drupal at short time; 
+If You want to build a website with Drupal at short time;
 
 #### Full stack Nginx Drupal:
-<p align="left"> <a href="https://drupal.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/docker-library/docs/e405066455691ca2429eb8094777f12d2dad8f91/drupal/logo.svg?sanitize=true" alt="Drupal" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png" alt="docker" width="40" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/5877084?s=200&v=4" alt="mariadb" height="50" width="50"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.nginx.com" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1412239?s=200&v=4" alt="nginx" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/25158?s=200&v=4" alt="php" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://redis.io" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1529926?s=200&v=4" alt="redis" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.varnish-software.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/577014?s=200&v=4" alt="varnish" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="#" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bash/bash.png" alt="Bash" height="50" width="50" /> </a>&nbsp;&nbsp;&nbsp;
- <a href="https://www.phpmyadmin.net/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1351977?s=200&v=4" alt="phpmyadmin" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://letsencrypt.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/17889013?s=200&v=4" alt="letsencrypt" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.portainer.io/?hsLang=en" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/22225832?s=200&v=4" alt="portainer" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.offen.dev/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/47735043?s=200&v=4" alt="backup" height="35" width="35"/> </a> </p>
+<p align="left"> <a href="https://drupal.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/docker-library/docs/e405066455691ca2429eb8094777f12d2dad8f91/drupal/logo.svg?sanitize=true" alt="Drupal" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://docs.docker.com/compose/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/docker/compose/v2/logo.png" alt="docker compose" width="40" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/5877084?s=200&v=4" alt="mariadb" height="50" width="50"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://dev.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/2452804?s=200&v=4" alt="mysql" height="50" width="50"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.nginx.com" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1412239?s=200&v=4" alt="nginx" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/25158?s=200&v=4" alt="php" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://redis.io" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1529926?s=200&v=4" alt="redis" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.varnish-software.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/577014?s=200&v=4" alt="varnish" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="#" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bash/bash.png" alt="Bash" height="50" width="50" /> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.phpmyadmin.net/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1351977?s=200&v=4" alt="phpmyadmin" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://certbot.eff.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/17889013?s=200&v=4" alt="certbot" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://letsencrypt.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/9289019?s=200&v=4" alt="letsencrypt" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.portainer.io/?hsLang=en" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/22225832?s=200&v=4" alt="portainer" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.offen.dev/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/47735043?s=200&v=4" alt="backup" height="35" width="35"/> </a> </p>
 
 Plus, manage docker containers with Portainer.
 
+#### Supported CPU architectures:
+<p align="left"> arm64/aarch64, x86-64 </p>
+
+#### Supported Linux Package Manage Systems:
+<p align="left"> apk, dnf, yum, apt/apt-get, zypper </p>
+ 
+#### Supported Linux Operation Systems:
+<p align="left"> <a href="https://alpinelinux.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/7600810?s=200&v=4" alt="alpine linux" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://fedoraproject.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/e6b1e7f0fb8d0bf920bd719c7289243138bdc1b4/topics/fedora/fedora.png" alt="fedora" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.centos.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/79192?s=200&v=4" alt="centos" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.debian.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1854028?s=200&v=4" alt="debian" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://ubuntu.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/4604537?s=200&v=4" alt="ubuntu" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.raspberrypi.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1294177?s=200&v=4" alt="ubuntu" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/33972111?s=200&v=4" alt="redhat on s390x (IBM Z)" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.suse.com/products/server/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/623819?s=200&v=4" alt="opensuse on s390x (IBM Z)" height="40" width="40"/> </a> </p>
+
+##### Note: Fedora 37, 39 and alpine linux x86-64 compatible, could not try sles IBM Z s390x, rhel IBM Z s390x and raspberrypi.
+
 #### With this project you can quickly run the following:
 
-- [Drupal](https://hub.docker.com/_/drupal) - [php-fpm](https://hub.docker.com/_/php?tab=tags&page=1&name=fpm)
+- [Drupal](https://hub.docker.com/_/drupal) - [php-fpm](https://hub.docker.com/_/php)
 - [webserver (nginx)](https://hub.docker.com/_/nginx)
 - [certbot (letsencrypt)](https://hub.docker.com/r/certbot/certbot)
 - [phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
-- [database](https://hub.docker.com/_/mariadb)
+- [databaseMariadb](https://hub.docker.com/_/mariadb) [databaseMysql](https://hub.docker.com/_/mysql)
 - [redis](https://hub.docker.com/_/redis)
 - [varnish](https://hub.docker.com/_/varnish)
 - [backup](https://hub.docker.com/r/offen/docker-volume-backup)
@@ -44,7 +74,7 @@ Create rules to open ports to the internet, or to a specific IPv4 address or ran
 	- [Redis](#redis)
 	- [Varnish](#varnish)
 	- [phpMyAdmin](#phpmyadmin)
-	- [backup](#backup)					  
+	- [backup](#backup)
 
 ## Automatic
 
@@ -71,7 +101,7 @@ Make sure you have the latest versions of **Docker** and **Docker Compose** inst
 - [How install docker](https://docs.docker.com/engine/install/)
 - [How install docker compose](https://docs.docker.com/compose/install/)
 
-Clone this repository or copy the files from this repository into a new folder. In the **docker-compose.yml** file you may change the database from MariaDB to MySQL.
+Clone this repository or copy the files from this repository into a new folder.
 
 Make sure to [add your user to the `docker` group](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
@@ -80,6 +110,7 @@ Make sure to [add your user to the `docker` group](https://docs.docker.com/insta
 ### Configuration
 
 download with
+
 ```
 git clone https://github.com/damalis/full-stack-nginx-drupal-for-everyone-with-docker-compose.git
 ```
@@ -96,26 +127,36 @@ Copy the example environment into `.env`
 cp env.example .env
 ```
 
-Edit the `.env` file to change values of ```LOCAL_TIMEZONE```, ```DOMAIN_NAME```, ```DIRECTORY_PATH```, ```LETSENCRYPT_EMAIL```, ```DB_USER```, ```DB_PASSWORD```, ```DB_NAME```, ```MYSQL_ROOT_PASSWORD```, ```PMA_CONTROLUSER```, ```PMA_CONTROLPASS```, ```PMA_HTPASSWD_USERNAME``` and ```PMA_HTPASSWD_PASSWORD```.
+Edit the `.env` file to change values of ```LOCAL_TIMEZONE```, ```DOMAIN_NAME```, ```DIRECTORY_PATH```, ```LETSENCRYPT_EMAIL```, ```DB_USER```, ```DB_PASSWORD```, ```DB_NAME```, ```MYSQL_ROOT_PASSWORD```, ```DATABASE_IMAGE_NAME```, ```DATABASE_CONT_NAME```, ```DATABASE_PACKAGE_MANAGER```, ```DATABASE_AUTHENTICATION_PLUGIN```, ```DATABASE_ADMIN_COMMANDLINE```, ```PMA_CONTROLUSER```, ```PMA_CONTROLPASS```, ```PMA_HTPASSWD_USERNAME```, ```PMA_HTPASSWD_PASSWORD``` and ```VARNISH_VERSION```.
 
 LOCAL_TIMEZONE=[to see local timezones](https://docs.diladele.com/docker/timezones.html)
 
-DIRECTORY_PATH=```pwd``` at command line
+DIRECTORY_PATH=```pwd``` at command line\
+DATABASE_IMAGE_NAME=```mariadb``` or ```mysql```\
+DATABASE_CONT_NAME=```mariadb```, ```mysql``` or ```custom name```\
+DATABASE_PACKAGE_MANAGER=```apt-get update && apt-get install -y gettext-base``` for mariadb, ```microdnf install -y gettext``` for mysql\
+DATABASE_AUTHENTICATION_PLUGIN=```mysql_native_password``` for mariadb, ```caching_sha2_password``` for mysql\
+DATABASE_ADMIN_COMMANDLINE=```mariadb-admin``` for mariadb, ```mysqladmin``` for mysql\
+VARNISH_VERSION=```latest``` for centos version 9+ and fedora, ```stable``` for the others
 
 and
 
 ```
 cp ./phpmyadmin/apache2/sites-available/default-ssl.sample.conf ./phpmyadmin/apache2/sites-available/default-ssl.conf
 ```
-
 change example.com to your domain name in ```./phpmyadmin/apache2/sites-available/default-ssl.conf``` file.
+
+```
+cp ./database/phpmyadmin/sql/create_tables.sql.template.example ./database/phpmyadmin/sql/create_tables.sql.template
+```
+change pma_controluser, db_authentication_plugin and db_authentication_password in ```./database/phpmyadmin/sql/create_tables.sql.template``` file.
 
 ### Installation
 
 Firstly: will create external volume
 
 ```
-docker volume create --driver local --opt type=none --opt device=${DIRECTORY_PATH}/certbot --opt o=bind certbot-etc
+docker volume create --driver local --opt type=none --opt device=${PWD}/certbot --opt o=bind certbot-etc
 ```
 
 ```
@@ -137,6 +178,7 @@ For convenience you may add a new entry into your hosts file.
 ```
 docker compose -f portainer-docker-compose.yml -p portainer up -d 
 ```
+
 manage docker with [Portainer](https://www.portainer.io/) is the definitive container management tool for Docker, Docker Swarm with it's highly intuitive GUI and API. 
 
 You can also visit `https://example.com:9001` to access portainer after starting the containers.
@@ -175,7 +217,8 @@ To stop and remove all the containers use the `down` command:
 docker compose down
 ```
 
-to remove portainer and the other containers
+to remove portainer and the other containers:
+
 ```
 docker rm -f $(docker ps -a -q)
 ```
@@ -186,13 +229,26 @@ Use `-v` if you need to remove the database volume which is used to persist the 
 docker compose down -v
 ```
 
-to remove external certbot-etc and portainer and the other volumes
+to remove external certbot-etc and portainer and the other volumes:
 
 ```
 docker volume rm $(docker volume ls -q)
 ```
 
-to remove portainer and the other images
+Delete all images, containers, volumes, and networks that are not associated with a container (dangling):
+
+```
+docker system prune
+```
+
+To additionally remove any stopped containers and all unused images (not just dangling ones), add the -a flag to the command:
+
+```
+docker system prune -a
+```
+
+to remove portainer and the other images:
+
 ```
 docker rmi $(docker image ls -q)
 ```
@@ -218,6 +274,8 @@ You should see the "Drupal installation" page in your browser. If not, please ch
 ```
 https://example.com
 ```
+
+if you should see the "The website encountered an unexpected error. Please try again later." in your browser, run ```drush cache:rebuild``` in drupal container.
 
 add or remove code in the ./php-fpm/php/conf.d/security.ini file for custom php.ini configurations
 
@@ -246,18 +304,62 @@ ADVANCED OPTIONS -> Host: database
 
 [https://mariadb.com/kb/en/configuring-mariadb-with-option-files/](https://mariadb.com/kb/en/configuring-mariadb-with-option-files/)
 
+[https://dev.mysql.com/doc/refman/8.3/en/](https://dev.mysql.com/doc/refman/8.3/en/)
+
 #### Redis
 
-if there isn't these lines, Edit Drupal settings file: ./drupal/sites/default/settings.php and add these lines at the bottom of the file:
+at page https://example.com/admin/modules, filter: redis and check then install.
+
+if there isn't these lines, Edit Drupal settings file: ```./drupal/sites/default/settings.php``` and add these lines at the bottom of the file:
 
 ```
+$settings['redis.connection']['interface'] = 'PhpRedis';
+// Host ip address.
 $settings['redis.connection']['host'] = 'redis';
-$settings['redis.connection']['port'] = 6379;
+											 
 $settings['cache']['default'] = 'cache.backend.redis';
-$settings['redis.connection']['base'] = 8;
+// Redis port.
+$settings['redis.connection']['port'] = '6379';
+$settings['redis.connection']['base'] = 12;
+// Password of redis updated in php.ini file.
+// $settings['redis.connection']['password'] = "password";
+$settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
+$settings['cache']['bins']['discovery'] = 'cache.backend.chainedfast';
+$settings['cache']['bins']['config'] = 'cache.backend.chainedfast';
+```
+
+Create ```./drupal/sites/default/files/services.yml``` inisde default folder and add the below code in it.
+
+```
+services:
+	# Cache tag checksum backend. Used by redis and most other cache backend
+	# to deal with cache tag invalidations.
+	cache_tags.invalidator.checksum:
+		class: Drupal\redis\Cache\RedisCacheTagsChecksum
+		arguments: ['@redis.factory']
+		tags:
+			- { name: cache_tags_invalidator }
+
+	# Replaces the default lock backend with a redis implementation.
+	lock:
+		class: Drupal\Core\Lock\LockBackendInterface
+	factory: ['@redis.lock.factory', get]
+
+	# Replaces the default persistent lock backend with a redis implementation.
+	lock.persistent:
+		class: Drupal\Core\Lock\LockBackendInterface
+		factory: ['@redis.lock.factory', get]
+		arguments: [true]
+
+	# Replaces the default flood backend with a redis implementation.
+	flood:
+	class: Drupal\Core\Flood\FloodInterface
+	factory: ['@redis.flood.factory', get]
 ```
 
 #### Varnish
+
+at page https://example.com/admin/modules, filter: purge and check then install.
 
 Varnish Server Hostname: varnish
 
