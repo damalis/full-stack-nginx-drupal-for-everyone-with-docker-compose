@@ -161,7 +161,7 @@ Edit the `.env` file to change values of
   </tr>
   <tr>
     <td><code>DATABASE_CONT_NAME</code></td>
-    <td colspan="2"><code>mariadb</code>, <code>mysql</code> or <code>custom name</code></td>
+    <td colspan="2"><code>mariadb</code>, <code>mysql</code> or <code><a href="https://docs.docker.com/reference/compose-file/services/#container_name" rel="nofollow" alt="custom name">custom name</a></code></td>
   </tr>
   <tr>
     <td rowspan="2"><code>DATABASE_PACKAGE_MANAGER</code></td>
@@ -349,7 +349,7 @@ add or remove code in the ```./webserver/templates/nginx.conf.template``` file f
 
 #### Database
 
-ADVANCED OPTIONS -> |```Host: database```|
+ADVANCED OPTIONS -> |```Host: database```|```Username: root```|```Password: root password```|
 
 [https://mariadb.com/kb/en/configuring-mariadb-with-option-files/](https://mariadb.com/kb/en/configuring-mariadb-with-option-files/)
 
