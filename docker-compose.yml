@@ -33,7 +33,7 @@ services:
         labels:
             - 'docker-volume-backup.stop-during-backup=true'
         command: >
-            bash -c "curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s redis && composer require drush/drush; composer require drupal/purge drupal/purge_purger_http drupal/redis; 
+            bash -c "curl -sSLf https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s redis && composer require drush/drush; composer require drupal/purge drupal/purge_purger_http drupal/redis; 
             if [ ! -f \"${WEBSERVER_DOC_ROOT}/sites/default/settings.php\" ]; then install -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/default.settings.php ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && sed -i 's/#/\\/\\/#/g' ${WEBSERVER_DOC_ROOT}/sites/default/settings.php && 
             echo -e \"\\n\\$$settings['trusted_host_patterns'] = [\\n\\t'^$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n\\t'^.+\\.$$(echo \"${DOMAIN_NAME}\" | sed 's/\\./\\\\./g')$$',\\n];\" >> ${WEBSERVER_DOC_ROOT}/sites/default/settings.php; 
             mkdir -p -m 777 ${WEBSERVER_DOC_ROOT}/sites/default/files; fi; TMP=$$(mktemp) && grep -vF 'date.timezone' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini > $$TMP && echo 'date.timezone = ${LOCAL_TIMEZONE}' >> $$TMP && cp $$TMP ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; docker-php-entrypoint 'php-fpm'"
